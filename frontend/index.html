@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WriterApp</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="popup">
+                <div class="popup-container">
+                    <input
+                        class="popup-password"
+                        type="text"
+                        placeholder="Password..."
+                    />
+                    <button class="popup-confirm">Confirm</button>
+                </div>
+            </div>
+            <div class="left">
+                <input class="title-input" type="text" placeholder="Title..." />
+                <input
+                    class="description-input"
+                    type="text"
+                    placeholder="Description..."
+                />
+                <input
+                    class="password-input"
+                    type="text"
+                    placeholder="Password..."
+                />
+                <button class="submit-btn">Submit</button>
+                <h2>Documents:</h2>
+                <ul class="docs"></ul>
+            </div>
+            <div class="right">
+                <h2>Document details:</h2>
+                <input class="title-box" type="text" />
+                <input class="description-box" type="text" />
+                <button class="save-btn">Save</button>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+        <script src="./script.js"></script>
+    </body>
+</html>
