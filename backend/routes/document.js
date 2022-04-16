@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const documentController = require("../controllers/DocumentController.js");
+const { validateParam, schemas } = require("../helpers/routeHelpers");
 
 router
     .route("/")
@@ -10,9 +11,21 @@ router
 
 router
     .route("/:documentID")
-    .get(documentController.getDocument)
-    .post(documentController.confirmPassword)
-    .patch(documentController.updateDocument)
-    .delete(documentController.deleteDocument);
+    .get(
+        validateParam(schemas.idSchema, "documentID"),
+        documentController.getDocument
+    )
+    .post(
+        validateParam(schemas.idSchema, "documentID"),
+        documentController.confirmPassword
+    )
+    .patch(
+        validateParam(schemas.idSchema, "documentID"),
+        documentController.updateDocument
+    )
+    .delete(
+        validateParam(schemas.idSchema, "documentID"),
+        documentController.deleteDocument
+    );
 
 module.exports = router;

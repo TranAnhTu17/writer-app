@@ -12,13 +12,13 @@ class DocumentController {
         return res.json({ success: true, document: newDocument });
     }
     async getDocument(req, res, next) {
-        const { documentID } = req.params;
+        const { documentID } = req.value.params;
         const document = await Document.findById(documentID);
 
         return res.json({ success: true, document });
     }
     async updateDocument(req, res, next) {
-        const { documentID } = req.params;
+        const { documentID } = req.value.params;
 
         const newDocument = req.body;
 
@@ -30,7 +30,7 @@ class DocumentController {
         return res.json({ success: true, document: newDocument });
     }
     async deleteDocument(req, res, next) {
-        const { documentID } = req.params;
+        const { documentID } = req.value.params;
         const deletedDocument = await Document.findOneAndDelete(documentID);
 
         return res.json({
@@ -40,7 +40,7 @@ class DocumentController {
     }
     async confirmPassword(req, res, next) {
         const { password } = req.body;
-        const { documentID } = req.params;
+        const { documentID } = req.value.params;
         const document = await Document.findById(documentID);
 
         const passwordValid = await bcrypt.compare(password, document.password);
