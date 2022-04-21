@@ -38,19 +38,7 @@ class DocumentController {
             document: deletedDocument,
         });
     }
-    async confirmPassword(req, res, next) {
-        const { password } = req.body;
-        const { documentID } = req.value.params;
-        const document = await Document.findById(documentID);
-
-        const passwordValid = await bcrypt.compare(password, document.password);
-        if (!passwordValid) {
-            return res.json({
-                success: false,
-                message: "Incorrect password!",
-            });
-        }
-
+    async openDocument(req, res, next) {
         return res.json({
             success: true,
         });

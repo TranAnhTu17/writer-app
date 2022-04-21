@@ -3,6 +3,7 @@ const router = express.Router();
 
 const documentController = require("../controllers/DocumentController.js");
 const { validateParam, schemas } = require("../helpers/routeHelpers");
+const middlewareController = require("../middlewares/middlewareController");
 
 router
     .route("/")
@@ -17,7 +18,8 @@ router
     )
     .post(
         validateParam(schemas.idSchema, "documentID"),
-        documentController.confirmPassword
+        middlewareController.confirmPassword,
+        documentController.openDocument
     )
     .patch(
         validateParam(schemas.idSchema, "documentID"),
